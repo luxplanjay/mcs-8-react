@@ -5,18 +5,19 @@ export default function Loader({ children }) {
   const [dots, setDots] = useState("");
 
   useEffect(() => {
-    const interval = setInterval(
-      () => setDots(d => (d.length < 3 ? d + "." : "")),
-      250
-    );
+    const interval = setInterval(() => {
+      setDots((dots) => (dots.length < 3 ? dots + "." : ""));
+    }, 250);
 
     return () => clearInterval(interval);
   }, []);
 
   return (
-    <strong className={css.text}>
-      {children}
-      {dots}
-    </strong>
+    <p className={css.text}>
+      <b>
+        {children}
+        {dots}
+      </b>
+    </p>
   );
 }
